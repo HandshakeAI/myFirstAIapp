@@ -31,3 +31,11 @@ st.text('Enter an innovation in the window below and receive a future forecast')
 st.text('which lists the opportunities and dangers related to that innovation as')
 st.text('well as a story illustrating how this innovation can impact the')
 st.text('life of a student in Nigeria 10 years from now.')
+
+if "messages" not in st.session_state.keys():
+    st.session_state["messages"] = [{"role": "assistant", "content": "Provive a subject matter to generate a future forecast on."}]
+
+# Show the relevant content from the database on the frontend
+for messages in st.session_state.messages[2:]:
+    with st.chat_message(message["role"]):
+        st.write(message["content"])
