@@ -13,3 +13,7 @@ with st.sidebar:
         st.warning('Enter a valid API key', icon='⚠️')
     else:
         st.success('Proceed to entering your prompt message!', icon='👉')
+
+    # Sidebar toggles setup
+    chosen_model = ""
+    selected_model = st.sidebar.selectbox('Choose an OpenAI model', ['GPT-3.5', 'GPT-4'],
