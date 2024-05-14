@@ -25,6 +25,8 @@ with st.sidebar:
     chosen_max_length = st.sidebar.slider('max_length', min_value=32, max_value=10000, value=2000, step=8)
     chosen_number_of_samples = st.sidebar.slider('Number of samples', min_value=1, max_value=3, value=1, step=1)
 
+    st.sidebar.button('Clear Chat History', on_click = clear_chat_history)
+
 # main window title and description
 st.subheader('Future Forecast Generator')
 st.text('Enter an innovation in the window below and receive a future forecast')
@@ -39,3 +41,7 @@ if "messages" not in st.session_state.keys():
 for messages in st.session_state.messages[2:]:
     with st.chat_message(message["role"]):
         st.write(message["content"])
+
+# Make a button which clears teh converation and starts a new chat
+def clear_chat_history():
+    st.session_state.messages = [{"role": "assistant", "content": "Provive a subject matter to generate a future forecast on."}]
